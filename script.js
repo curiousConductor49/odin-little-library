@@ -38,8 +38,8 @@ function displayBooksInLibrary(library) {
 
         bookNodeTitle.textContent = `${library[i].title}`;
         bookNodeAuthor.textContent = `${library[i].author}`;
-        bookNodePageNum.textContent = `${library[i].pages}`;
-        bookNodeStatus.textContent = `${library[i].status}`;
+        bookNodePageNum.textContent = `${library[i].pages} pages`;
+        bookNodeStatus.textContent = `Status: ${library[i].status}`;
 
         bookNode.appendChild(bookNodeTitle);
         bookNode.appendChild(bookNodeAuthor);
