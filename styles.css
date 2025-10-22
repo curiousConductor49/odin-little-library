@@ -16,3 +16,26 @@
     height: 240px;
     border: 1px solid salmon;
 } */
+
+.library-book {
+    width: 150px;
+    height: 240px;
+    border: 2px solid burlywood;
+    border-radius: 10px;
+}
+
+.library-book .book-title {
+    color: blue;
+}
+
+.library-book .book-author {
+    color: red;
+}
+
+.library-book .book-pages {
+    color: orange;
+}
+
+.library-book .book-status {
+    color: green;
+}
