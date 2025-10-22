@@ -14,8 +14,8 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 // test calls and logs
-// addBookToLibrary("TWSA", "tls123", 3149, "read");
-// addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
+addBookToLibrary("TWSA", "tls123", 3149, "read");
+addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
 
 // console.log(libraryOfBooks);
 
@@ -47,6 +47,10 @@ function displayBooksInLibrary(library) {
         bookNode.appendChild(bookNodeStatus);
         
         bookNode.classList.add("library-book");
+        bookNodeTitle.classList.add("book-title");
+        bookNodeAuthor.classList.add("book-author");
+        bookNodePageNum.classList.add("book-pages");
+        bookNodeStatus.classList.add("book-status");
         libraryContainer.append(bookNode);
     }
 }
