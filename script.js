@@ -31,26 +31,37 @@ function displayBooksInLibrary(library) {
 
     for (let i = 0; i < library.length; i++) {
         const bookNode = document.createElement("article");
-        const bookNodeTitle = document.createElement("h2");
-        const bookNodeAuthor = document.createElement("h3");
-        const bookNodePageCount = document.createElement("p");
-        const bookNodeStatus = document.createElement("p");
 
-        bookNodeTitle.textContent = `${library[i].title}`;
-        bookNodeAuthor.textContent = `${library[i].author}`;
-        bookNodePageCount.textContent = `${library[i].pages} pages`;
-        bookNodeStatus.textContent = `Status: ${library[i].status}`;
-
-        bookNode.appendChild(bookNodeTitle);
-        bookNode.appendChild(bookNodeAuthor);
-        bookNode.appendChild(bookNodePageCount);
-        bookNode.appendChild(bookNodeStatus);
-        
+        for (const property in library[i]) {
+            switch (property) {
+                case "title":
+                    const bookNodeTitle = document.createElement("h2");
+                    bookNodeTitle.textContent = `${library[i].title}`;
+                    bookNode.appendChild(bookNodeTitle);
+                    bookNodeTitle.classList.add("book-title");
+                    break;
+                case "author":
+                    const bookNodeAuthor = document.createElement("h3");
+                    bookNodeAuthor.textContent = `${library[i].author}`;
+                    bookNode.appendChild(bookNodeAuthor);
+                    bookNodeAuthor.classList.add("book-author");
+                    break;
+                case "pages":
+                    const bookNodePageCount = document.createElement("p");
+                    bookNodePageCount.textContent = `${library[i].pages} pages`;
+                    bookNode.appendChild(bookNodePageCount);
+                    bookNodePageCount.classList.add("book-pages");
+                    break;
+                case "status":
+                    const bookNodeStatus = document.createElement("p");
+                    bookNodeStatus.textContent = `Status: ${library[i].status}`;
+                    bookNode.appendChild(bookNodeStatus);
+                    bookNodeStatus.classList.add("book-status");
+                    break;
+            }
+        }
+    
         bookNode.classList.add("library-book");
-        bookNodeTitle.classList.add("book-title");
-        bookNodeAuthor.classList.add("book-author");
-        bookNodePageCount.classList.add("book-pages");
-        bookNodeStatus.classList.add("book-status");
         libraryContainer.append(bookNode);
     }
 }
