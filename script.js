@@ -27,6 +27,8 @@ function addBookToLibrary(title, author, pages, status) {
 // in the css, target the element's class attribute to style it as a grid item in the grid container
 
 function displayBooksInLibrary(library) {
+    const libraryContainer = document.querySelector(".library-container");
+
     for (let i = 0; i < library.length; i++) {
         const bookNode = document.createElement("article");
         const bookNodeTitle = document.createElement("h2");
@@ -45,5 +47,8 @@ function displayBooksInLibrary(library) {
         bookNode.appendChild(bookNodeStatus);
         
         bookNode.classList.add("library-book");
+        libraryContainer.append(bookNode);
     }
 }
+
+displayBooksInLibrary(libraryOfBooks);
