@@ -6,6 +6,7 @@
 
 .library-container {
     border: 2px solid black;
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
@@ -16,6 +17,7 @@
     height: 240px;
     border: 2px solid burlywood;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .library-book .book-title {
