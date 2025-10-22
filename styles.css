@@ -11,12 +11,6 @@
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* .library-container div {
-    width: 150px;
-    height: 240px;
-    border: 1px solid salmon;
-} */
-
 .library-book {
     width: 150px;
     height: 240px;
