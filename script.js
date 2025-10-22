@@ -33,23 +33,23 @@ function displayBooksInLibrary(library) {
         const bookNode = document.createElement("article");
         const bookNodeTitle = document.createElement("h2");
         const bookNodeAuthor = document.createElement("h3");
-        const bookNodePageNum = document.createElement("p");
+        const bookNodePageCount = document.createElement("p");
         const bookNodeStatus = document.createElement("p");
 
         bookNodeTitle.textContent = `${library[i].title}`;
         bookNodeAuthor.textContent = `${library[i].author}`;
-        bookNodePageNum.textContent = `${library[i].pages} pages`;
+        bookNodePageCount.textContent = `${library[i].pages} pages`;
         bookNodeStatus.textContent = `Status: ${library[i].status}`;
 
         bookNode.appendChild(bookNodeTitle);
         bookNode.appendChild(bookNodeAuthor);
-        bookNode.appendChild(bookNodePageNum);
+        bookNode.appendChild(bookNodePageCount);
         bookNode.appendChild(bookNodeStatus);
         
         bookNode.classList.add("library-book");
         bookNodeTitle.classList.add("book-title");
         bookNodeAuthor.classList.add("book-author");
-        bookNodePageNum.classList.add("book-pages");
+        bookNodePageCount.classList.add("book-pages");
         bookNodeStatus.classList.add("book-status");
         libraryContainer.append(bookNode);
     }
