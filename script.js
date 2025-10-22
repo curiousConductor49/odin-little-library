@@ -25,3 +25,25 @@ function addBookToLibrary(title, author, pages, status) {
 // create an element populated with the book obj's info (make sure it has a class attribute)
 // add this element to the DOM, appending it as a child node of the grid container
 // in the css, target the element's class attribute to style it as a grid item in the grid container
+
+function displayBooksInLibrary(library) {
+    for (let i = 0; i < library.length; i++) {
+        const bookNode = document.createElement("article");
+        const bookNodeTitle = document.createElement("h2");
+        const bookNodeAuthor = document.createElement("h3");
+        const bookNodePageNum = document.createElement("p");
+        const bookNodeStatus = document.createElement("p");
+
+        bookNodeTitle.textContent = `${library[i].title}`;
+        bookNodeAuthor.textContent = `${library[i].author}`;
+        bookNodePageNum.textContent = `${library[i].pages}`;
+        bookNodeStatus.textContent = `${library[i].status}`;
+
+        bookNode.appendChild(bookNodeTitle);
+        bookNode.appendChild(bookNodeAuthor);
+        bookNode.appendChild(bookNodePageNum);
+        bookNode.appendChild(bookNodeStatus);
+        
+        bookNode.classList.add("library-book");
+    }
+}
