@@ -13,12 +13,6 @@ function addBookToLibrary(title, author, pages, status) {
     libraryOfBooks.push(newBookItem);
 }
 
-// test calls and logs
-// addBookToLibrary("TWSA", "tls123", 3149, "read");
-// addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
-
-// console.log(libraryOfBooks);
-
 function displayBooksInLibrary(library) {
     const libraryContainer = document.querySelector(".library-container");
 
@@ -65,5 +59,11 @@ function displayBooksInLibrary(library) {
         }
     }
 }
+// test calls and logs
+// addBookToLibrary("TWSA", "tls123", 3149, "read");
+// addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
 
+// console.log(libraryOfBooks);
 displayBooksInLibrary(libraryOfBooks);
+
+// pseudocode!!
