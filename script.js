@@ -67,3 +67,9 @@ function displayBooksInLibrary(library) {
 displayBooksInLibrary(libraryOfBooks);
 
 // pseudocode!!
+// create an html form (text inputs for author, title, status; number input for page count; button to submit) inside a dialog, and save their DOM nodes to variables for later access
+// set the dialog to be opened by a button once clicked (aka showModal() inside the event listener's function)
+// set the dialog to be closed by one of two means (let's test them!):
+    // 1) set the form inside the dialog to method="dialog", which should save the form state but not submit it when the form button is clicked, and automatically close the dialog
+    // 2) when the form button is clicked, use event.preventDefault() to prevent form submission, and "manually" close the dialog via close()
+// either way, we can use the value property for each form input to get what the user inputted—pass these values to the add book function, which should be called when user submits the form aka clicks the submit button regardless of how the dialog is closed
