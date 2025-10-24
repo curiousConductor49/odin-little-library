@@ -12,7 +12,30 @@
             <h1>Little Library: Home of Mighty Imagination</h1>
         </header>
         <section class="library-container">
+            <!-- remove the open attribute later, this is just to see what we're doing! -->
         </section>
+        <dialog open="true" class="new-book-form-container">
+            <form method="dialog" class="new-book-form">
+                <h2>Book Details</h2>
+                <article class="input-container">
+                    <label for="book-author">Author:</label>
+                    <input type="text" id="book-author" placeholder="Jane Doe">
+                </article>
+                <article class="input-container">
+                    <label for="book-title">Title:</label>
+                    <input type="text" id="book-title" placeholder="Adventures of Ms. Doe">
+                </article>
+                <article class="input-container">
+                    <label for="book-page-count">Page Count:</label>
+                    <input type="number" id="book-page-count" placeholder="375">
+                </article>
+                <article class="input-container">
+                    <label for="book-status">Status:</label>
+                    <input type="text" id="book-status" placeholder="read">
+                </article>
+                <button type="submit" class="submit-btn">Add Book</button>
+            </form>
+        </dialog>
     </main>
     
     <script src="script.js"></script>
