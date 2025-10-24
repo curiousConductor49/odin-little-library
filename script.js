@@ -1,6 +1,7 @@
 const newBookFormContainer = document.querySelector(".new-book-form-container");
 const newBookForm = document.querySelector(".new-book-form");
 const submitBtn = document.querySelector(".submit-btn");
+const newBookBtn = document.querySelector(".new-book-btn");
 
 const libraryOfBooks = [];
 
@@ -77,7 +78,7 @@ function createNewBookFromUser(event) {
     console.log(formInputString);
 }
 
-newBookFormContainer.showModal(); // <-- this should go inside the function called when the "new book" button is clicked (TO BE ADDED TO HTML)
+newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
 submitBtn.addEventListener("click", createNewBookFromUser);
 
 // test calls and logs
