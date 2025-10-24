@@ -70,9 +70,14 @@ function createNewBookFromUser(event) {
     const pagesInput = document.getElementById("book-page-count");
     const statusInput = document.getElementById("book-status");
 
-    addBookToLibrary(authorInput.value, titleInput.value, pagesInput.value, statusInput.value);
+    const formInputString = [...authorInput.value, titleInput.value, pagesInput.value, statusInput.value];
+
+    event.preventDefault();
+    newBookFormContainer.close(formInputString);
+    console.log(formInputString);
 }
 
+newBookFormContainer.showModal(); // <-- this should go inside the function called when the "new book" button is clicked (TO BE ADDED TO HTML)
 submitBtn.addEventListener("click", createNewBookFromUser);
 
 // test calls and logs
@@ -85,7 +90,5 @@ displayBooksInLibrary(libraryOfBooks);
 // pseudocode!!
 // create an html form (text inputs for author, title, status; number input for page count; button to submit) inside a dialog, and save their DOM nodes to variables for later access
 // set the dialog to be opened by a button once clicked (aka showModal() inside the event listener's function)
-// set the dialog to be closed by one of two means (let's test them!):
-    // 1) set the form inside the dialog to method="dialog", which should save the form state but not submit it when the form button is clicked, and automatically close the dialog
-    // 2) when the form button is clicked, use event.preventDefault() to prevent form submission, and "manually" close the dialog via close()
+// set the dialog to be closed when the form button is clicked; use event.preventDefault() to prevent form submission, and "manually" close the dialog via close()
 // either way, we can use the value property for each form input to get what the user inputted—pass these values to the add book function, which should be called when user submits the form aka clicks the submit button regardless of how the dialog is closed
