@@ -39,3 +39,27 @@
 .library-book .book-status {
     color: green;
 }
+
+.new-book-form-container {
+    border: 2px solid salmon;
+    margin: 0 auto;
+}
+
+.new-book-form {
+    border: 2px solid gray;
+    width: 30vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+}
+
+.submit-btn {
+    background-color: brown;
+    color: white;
+}
