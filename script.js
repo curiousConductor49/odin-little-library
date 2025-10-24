@@ -1,3 +1,7 @@
+const newBookFormContainer = document.querySelector(".new-book-form-container");
+const newBookForm = document.querySelector(".new-book-form");
+const submitBtn = document.querySelector(".submit-btn");
+
 const libraryOfBooks = [];
 
 function Book(title, author, pages, status) {
@@ -59,11 +63,23 @@ function displayBooksInLibrary(library) {
         }
     }
 }
+
+function createNewBookFromUser(event) {
+    const authorInput = document.getElementById("book-author");
+    const titleInput = document.getElementById("book-title");
+    const pagesInput = document.getElementById("book-page-count");
+    const statusInput = document.getElementById("book-status");
+
+    addBookToLibrary(authorInput.value, titleInput.value, pagesInput.value, statusInput.value);
+}
+
+submitBtn.addEventListener("click", createNewBookFromUser);
+
 // test calls and logs
 // addBookToLibrary("TWSA", "tls123", 3149, "read");
 // addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
 
-// console.log(libraryOfBooks);
+console.log(libraryOfBooks);
 displayBooksInLibrary(libraryOfBooks);
 
 // pseudocode!!
