@@ -3,7 +3,12 @@ const newBookForm = document.querySelector(".new-book-form");
 const submitBtn = document.querySelector(".submit-btn");
 const newBookBtn = document.querySelector(".new-book-btn");
 const libraryContainer = document.querySelector(".library-container");
+const emptyInputNotif = document.createElement("p");
+
+
 libraryContainer.textContent = "No books here!";
+emptyInputNotif.setAttribute("class", "empty-input-notif");
+newBookForm.appendChild(emptyInputNotif);
 
 
 const libraryOfBooks = [];
@@ -68,15 +73,23 @@ function createNewBookFromUser(event) {
     const pagesInput = document.getElementById("book-page-count");
     const statusInput = document.getElementById("book-status");
 
-    const formInputString = [titleInput.value, authorInput.value,pagesInput.value, statusInput.value].toString();
+    const formInputArr = [titleInput.value, authorInput.value,pagesInput.value, statusInput.value].map((input) => input.trim());
 
-    event.preventDefault();
-    newBookFormContainer.close(formInputString);
-    // clear form control values upon form submission
-    titleInput.value = null;
-    authorInput.value = null;
-    pagesInput.value = null;
-    statusInput.value = null;
+    if (formInputArr.some(val => val === "" || val.trim() === "")) {
+        emptyInputNotif.textContent = "Please fill out all fields to add a new book!";
+        event.preventDefault();
+    } else {
+        const formInputString = formInputArr.toString();
+
+        event.preventDefault();
+        newBookFormContainer.close(formInputString);
+        // clear form control values upon form submission
+        titleInput.value = null;
+        authorInput.value = null;
+        pagesInput.value = null;
+        statusInput.value = null;
+        emptyInputNotif.textContent = "";
+    }
 }
 
 newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
@@ -95,7 +108,3 @@ newBookFormContainer.addEventListener("close", (e) => {
 // displayBooksInLibrary(libraryOfBooks);
 
 // pseudocode!!
-// create an html form (text inputs for author, title, status; number input for page count; button to submit) inside a dialog, and save their DOM nodes to variables for later access
-// set the dialog to be opened by a button once clicked (aka showModal() inside the event listener's function)
-// set the dialog to be closed when the form button is clicked; use event.preventDefault() to prevent form submission, and "manually" close the dialog via close()
-// might want to add a button to cancel the dialog if no book is intended to be added + make sure blank inputs aren't allowed
