@@ -78,7 +78,7 @@ newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
 submitBtn.addEventListener("click", createNewBookFromUser);
 newBookFormContainer.addEventListener("close", (e) => {
     const inputArray = newBookFormContainer.returnValue.split(",");
-    addBookToLibrary(inputArray[0], inputArray[1], parseInt(inputArray[2]), inputArray[3]);
+    addBookToLibrary(inputArray[0], inputArray[1], inputArray[2], inputArray[3]);
     displayBooksInLibrary(libraryOfBooks);
     console.log(libraryOfBooks);
 })
