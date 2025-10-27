@@ -12,10 +12,6 @@
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.library-container .placeholder-text {
-    color: purple;
-}
-
 .library-book {
     width: 150px;
     height: 240px;
