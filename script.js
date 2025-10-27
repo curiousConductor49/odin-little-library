@@ -72,6 +72,11 @@ function createNewBookFromUser(event) {
 
     event.preventDefault();
     newBookFormContainer.close(formInputString);
+    // clear form control values upon form submission
+    titleInput.value = null;
+    authorInput.value = null;
+    pagesInput.value = null;
+    statusInput.value = null;
 }
 
 newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
@@ -93,5 +98,4 @@ newBookFormContainer.addEventListener("close", (e) => {
 // create an html form (text inputs for author, title, status; number input for page count; button to submit) inside a dialog, and save their DOM nodes to variables for later access
 // set the dialog to be opened by a button once clicked (aka showModal() inside the event listener's function)
 // set the dialog to be closed when the form button is clicked; use event.preventDefault() to prevent form submission, and "manually" close the dialog via close()
-// ISSUE: form controls aren't cleared each time the dialog is opened, need to reset them each time
 // might want to add a button to cancel the dialog if no book is intended to be added + make sure blank inputs aren't allowed
