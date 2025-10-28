@@ -68,8 +68,12 @@ function displayBooksInLibrary(library) {
         removeBookBtn.classList.add("remove-book-btn");
         bookNode.appendChild(removeBookBtn);
 
+        bookNode.setAttribute("data-id", `${library[i].id}`);
+
         bookNode.classList.add("library-book");
-        libraryContainer.appendChild(bookNode);  
+        libraryContainer.appendChild(bookNode);
+        
+        // console.log(bookNode.getAttribute("data-id"));
     }
 }
 
