@@ -62,6 +62,12 @@ function displayBooksInLibrary(library) {
                     break;
                 }
             }
+        
+        const removeBookBtn = document.createElement("button");
+        removeBookBtn.textContent = "Remove book";
+        removeBookBtn.classList.add("remove-book-btn");
+        bookNode.appendChild(removeBookBtn);
+
         bookNode.classList.add("library-book");
         libraryContainer.appendChild(bookNode);  
     }
