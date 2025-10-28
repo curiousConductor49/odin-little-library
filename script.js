@@ -125,3 +125,11 @@ newBookFormContainer.addEventListener("close", (e) => {
 })
 
 // pseudocode!!
+// change the element of bookNodeStatus to be a button for toggling read status
+// create a function on Book's prototype that toggles each instance's read status
+    // employ Element.classList.toggle() to add and remove a "read" class
+    // check the Classlist of the book
+    // if it has the read class, the textContent of bookNodeStatus should be "read"
+    // if it doesn't, the textContent should be "unread"
+// attach event listener to status toggle button (do this inside displayBooksInLibrary, just like the event listener for removing books)
+// inside callback function, reference the toggle function
