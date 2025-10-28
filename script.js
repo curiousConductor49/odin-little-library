@@ -108,3 +108,7 @@ newBookFormContainer.addEventListener("close", (e) => {
 // displayBooksInLibrary(libraryOfBooks);
 
 // pseudocode!!
+// give each dom book element:
+    // a remove button
+    // a data attribute for their unique id
+// attach event listener to remove-button: callback function should identify the right book in the library array w/ the id, remove it, and call the display books array
