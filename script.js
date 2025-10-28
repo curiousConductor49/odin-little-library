@@ -4,11 +4,15 @@ const submitBtn = document.querySelector(".submit-btn");
 const newBookBtn = document.querySelector(".new-book-btn");
 const libraryContainer = document.querySelector(".library-container");
 const emptyInputNotif = document.createElement("p");
-
+const removeBookBtn = document.createElement("button");
 
 libraryContainer.textContent = "No books here!";
+
 emptyInputNotif.setAttribute("class", "empty-input-notif");
 newBookForm.appendChild(emptyInputNotif);
+
+removeBookBtn.textContent = "Remove book";
+removeBookBtn.classList.add("remove-book-btn");
 
 
 const libraryOfBooks = [];
@@ -63,9 +67,6 @@ function displayBooksInLibrary(library) {
                 }
             }
         
-        const removeBookBtn = document.createElement("button");
-        removeBookBtn.textContent = "Remove book";
-        removeBookBtn.classList.add("remove-book-btn");
         bookNode.appendChild(removeBookBtn);
 
         bookNode.setAttribute("data-id", `${library[i].id}`);
@@ -102,6 +103,14 @@ function createNewBookFromUser(event) {
     }
 }
 
+function removeBookFromLibrary(bookId) {
+    libraryOfBooks.map((book, index) => {
+        if (book.id === bookId) {
+            libraryOfBooks.splice(index, 1);
+        }
+    });
+}
+
 newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
 submitBtn.addEventListener("click", createNewBookFromUser);
 newBookFormContainer.addEventListener("close", (e) => {
@@ -110,6 +119,13 @@ newBookFormContainer.addEventListener("close", (e) => {
     displayBooksInLibrary(libraryOfBooks);
     console.log(libraryOfBooks);
 })
+
+removeBookBtn.addEventListener("click", () => {
+    // console.log(removeBookBtn.parentElement.getAttribute("data-id"));
+    removeBookFromLibrary(removeBookBtn.parentElement.getAttribute("data-id"));
+    displayBooksInLibrary(libraryOfBooks);
+    console.log(libraryOfBooks);
+});
 
 // test calls and logs
 // addBookToLibrary("TWSA", "tls123", 3149, "read");
