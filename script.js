@@ -33,48 +33,50 @@ function addBookToLibrary(title, author, pages, status) {
 function displayBooksInLibrary(library) {
     if (libraryOfBooks.length > 0) {
         libraryContainer.textContent = "";
-    }
 
-    for (let i = 0; i < library.length; i++) {
-        const bookNode = document.createElement("article");
-
-        for (const property in library[i]) {
-            switch (property) {
-                case "title":
-                    const bookNodeTitle = document.createElement("h2");
-                    bookNodeTitle.textContent = `${library[i].title}`;
-                    bookNode.appendChild(bookNodeTitle);
-                    bookNodeTitle.classList.add("book-title");
-                    break;
-                case "author":
-                    const bookNodeAuthor = document.createElement("h3");
-                    bookNodeAuthor.textContent = `${library[i].author}`;
-                    bookNode.appendChild(bookNodeAuthor);
-                    bookNodeAuthor.classList.add("book-author");
-                    break;
-                case "pages":
-                    const bookNodePageCount = document.createElement("p");
-                    bookNodePageCount.textContent = `${library[i].pages} pages`;
-                    bookNode.appendChild(bookNodePageCount);
-                    bookNodePageCount.classList.add("book-pages");
-                    break;
-                case "status":
-                    const bookNodeStatus = document.createElement("p");
-                    bookNodeStatus.textContent = `Status: ${library[i].status}`;
-                    bookNode.appendChild(bookNodeStatus);
-                    bookNodeStatus.classList.add("book-status");
-                    break;
+        for (let i = 0; i < library.length; i++) {
+            const bookNode = document.createElement("article");
+    
+            for (const property in library[i]) {
+                switch (property) {
+                    case "title":
+                        const bookNodeTitle = document.createElement("h2");
+                        bookNodeTitle.textContent = `${library[i].title}`;
+                        bookNode.appendChild(bookNodeTitle);
+                        bookNodeTitle.classList.add("book-title");
+                        break;
+                    case "author":
+                        const bookNodeAuthor = document.createElement("h3");
+                        bookNodeAuthor.textContent = `${library[i].author}`;
+                        bookNode.appendChild(bookNodeAuthor);
+                        bookNodeAuthor.classList.add("book-author");
+                        break;
+                    case "pages":
+                        const bookNodePageCount = document.createElement("p");
+                        bookNodePageCount.textContent = `${library[i].pages} pages`;
+                        bookNode.appendChild(bookNodePageCount);
+                        bookNodePageCount.classList.add("book-pages");
+                        break;
+                    case "status":
+                        const bookNodeStatus = document.createElement("p");
+                        bookNodeStatus.textContent = `Status: ${library[i].status}`;
+                        bookNode.appendChild(bookNodeStatus);
+                        bookNodeStatus.classList.add("book-status");
+                        break;
+                    }
                 }
-            }
-        
-        bookNode.appendChild(removeBookBtn);
-
-        bookNode.setAttribute("data-id", `${library[i].id}`);
-
-        bookNode.classList.add("library-book");
-        libraryContainer.appendChild(bookNode);
-        
-        // console.log(bookNode.getAttribute("data-id"));
+            
+            bookNode.appendChild(removeBookBtn);
+    
+            bookNode.setAttribute("data-id", `${library[i].id}`);
+    
+            bookNode.classList.add("library-book");
+            libraryContainer.appendChild(bookNode);
+            
+            // console.log(bookNode.getAttribute("data-id"));
+        }
+    } else {
+        libraryContainer.textContent = "No books here!";
     }
 }
 
@@ -120,7 +122,7 @@ newBookFormContainer.addEventListener("close", (e) => {
     console.log(libraryOfBooks);
 })
 
-removeBookBtn.addEventListener("click", () => {
+removeBookBtn.addEventListener("click", (e) => {
     // console.log(removeBookBtn.parentElement.getAttribute("data-id"));
     removeBookFromLibrary(removeBookBtn.parentElement.getAttribute("data-id"));
     displayBooksInLibrary(libraryOfBooks);
