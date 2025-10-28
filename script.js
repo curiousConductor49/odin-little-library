@@ -25,6 +25,39 @@ function addBookToLibrary(title, author, pages, status) {
     libraryOfBooks.push(newBookItem);
 }
 
+function createNewBookFromUser(event) {
+    const authorInput = document.getElementById("book-author");
+    const titleInput = document.getElementById("book-title");
+    const pagesInput = document.getElementById("book-page-count");
+    const statusInput = document.getElementById("book-status");
+
+    const formInputArr = [titleInput.value, authorInput.value,pagesInput.value, statusInput.value].map((input) => input.trim());
+
+    if (formInputArr.some(val => val === "" || val.trim() === "")) {
+        emptyInputNotif.textContent = "Please fill out all fields to add a new book!";
+        event.preventDefault();
+    } else {
+        const formInputString = formInputArr.toString();
+
+        event.preventDefault();
+        newBookFormContainer.close(formInputString);
+        // clear form control values upon form submission
+        titleInput.value = null;
+        authorInput.value = null;
+        pagesInput.value = null;
+        statusInput.value = null;
+        emptyInputNotif.textContent = "";
+    }
+}
+
+function removeBookFromLibrary(bookId) {
+    libraryOfBooks.map((book, index) => {
+        if (book.id === bookId) {
+            libraryOfBooks.splice(index, 1);
+        }
+    });
+}
+
 function displayBooksInLibrary(library) {
     if (libraryOfBooks.length > 0) {
         libraryContainer.textContent = "";
@@ -69,7 +102,7 @@ function displayBooksInLibrary(library) {
             removeBookBtn.addEventListener("click", (e) => {
                 removeBookFromLibrary(removeBookBtn.parentElement.getAttribute("data-id"));
                 displayBooksInLibrary(libraryOfBooks);
-                console.log(libraryOfBooks);
+                // console.log(libraryOfBooks);
             });
     
             bookNode.setAttribute("data-id", `${library[i].id}`);
@@ -82,56 +115,13 @@ function displayBooksInLibrary(library) {
     }
 }
 
-function createNewBookFromUser(event) {
-    const authorInput = document.getElementById("book-author");
-    const titleInput = document.getElementById("book-title");
-    const pagesInput = document.getElementById("book-page-count");
-    const statusInput = document.getElementById("book-status");
-
-    const formInputArr = [titleInput.value, authorInput.value,pagesInput.value, statusInput.value].map((input) => input.trim());
-
-    if (formInputArr.some(val => val === "" || val.trim() === "")) {
-        emptyInputNotif.textContent = "Please fill out all fields to add a new book!";
-        event.preventDefault();
-    } else {
-        const formInputString = formInputArr.toString();
-
-        event.preventDefault();
-        newBookFormContainer.close(formInputString);
-        // clear form control values upon form submission
-        titleInput.value = null;
-        authorInput.value = null;
-        pagesInput.value = null;
-        statusInput.value = null;
-        emptyInputNotif.textContent = "";
-    }
-}
-
-function removeBookFromLibrary(bookId) {
-    libraryOfBooks.map((book, index) => {
-        if (book.id === bookId) {
-            libraryOfBooks.splice(index, 1);
-        }
-    });
-}
-
 newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
 submitBtn.addEventListener("click", createNewBookFromUser);
 newBookFormContainer.addEventListener("close", (e) => {
     const inputArray = newBookFormContainer.returnValue.split(",");
     addBookToLibrary(inputArray[0], inputArray[1], inputArray[2], inputArray[3]);
     displayBooksInLibrary(libraryOfBooks);
-    console.log(libraryOfBooks);
+    // console.log(libraryOfBooks);
 })
 
-// test calls and logs
-// addBookToLibrary("TWSA", "tls123", 3149, "read");
-// addBookToLibrary("Glorious Rivals", "Jennifer Lynn Barnes", 64, "reading");
-// console.log(libraryOfBooks);
-// displayBooksInLibrary(libraryOfBooks);
-
 // pseudocode!!
-// give each dom book element:
-    // a remove button
-    // a data attribute for their unique id
-// attach event listener to remove-button: callback function should identify the right book in the library array w/ the id, remove it, and call the display books array
