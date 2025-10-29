@@ -20,6 +20,10 @@ function Book(title, author, pages, status) {
     this.status = status;
 }
 
+Book.prototype.toggleReadStatus = function() {
+    
+}
+
 function addBookToLibrary(title, author, pages, status) {
     const newBookItem = new Book(title, author, pages, status);
     libraryOfBooks.push(newBookItem);
