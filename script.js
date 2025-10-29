@@ -108,6 +108,10 @@ function displayBooksInLibrary(library) {
                 displayBooksInLibrary(libraryOfBooks);
                 // console.log(libraryOfBooks);
             });
+
+            bookNodeStatus.addEventListener("click", (e) => {
+                bookNode.toggleReadStatus();
+            });
     
             bookNode.setAttribute("data-id", `${library[i].id}`);
     
@@ -131,9 +135,10 @@ newBookFormContainer.addEventListener("close", (e) => {
 // pseudocode!!
 // change the element of bookNodeStatus to be a button for toggling read status
 // create a function on Book's prototype that toggles each instance's read status
-    // employ Element.classList.toggle() to add and remove a "read" class
-    // check the Classlist of the book
-    // if it has the read class, the textContent of bookNodeStatus should be "read"
-    // if it doesn't, the textContent should be "unread"
+    // need to update the book instance's actual status property + the associated DOM element's status textContent
+    // pass the function the book instance's unique id, which will be used to search the array of books and find the right book
+    // the function will check the right book's status
+        // if it's "read", change it to "unread" and update the DOM element's status textContent
+        // if it's "unread", change it to "read" and update the DOM element's status textContent
 // attach event listener to status toggle button (do this inside displayBooksInLibrary, just like the event listener for removing books)
-// inside callback function, reference the toggle function
+// inside callback function, call the toggle function
