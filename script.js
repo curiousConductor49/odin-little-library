@@ -133,5 +133,3 @@ newBookFormContainer.addEventListener("close", (e) => {
     displayBooksInLibrary(libraryOfBooks);
     // console.log(libraryOfBooks);
 })
-
-// pseudocode!!
