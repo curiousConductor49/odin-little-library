@@ -86,7 +86,7 @@ function displayBooksInLibrary(library) {
                         bookNodePageCount.classList.add("book-pages");
                         break;
                     case "status":
-                        const bookNodeStatus = document.createElement("p");
+                        const bookNodeStatus = document.createElement("button");
                         bookNodeStatus.textContent = `Status: ${library[i].status}`;
                         bookNode.appendChild(bookNodeStatus);
                         bookNodeStatus.classList.add("book-status");
