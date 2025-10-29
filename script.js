@@ -21,7 +21,7 @@ function Book(title, author, pages, status) {
 }
 
 Book.prototype.toggleReadStatus = function() {
-    
+    this.status = this.status === "read" ? "unread" : "read";   
 }
 
 function addBookToLibrary(title, author, pages, status) {
@@ -94,6 +94,12 @@ function displayBooksInLibrary(library) {
                         bookNodeStatus.textContent = `Status: ${library[i].status}`;
                         bookNode.appendChild(bookNodeStatus);
                         bookNodeStatus.classList.add("book-status");
+
+                        bookNodeStatus.addEventListener("click", (e) => {
+                            library[i].toggleReadStatus();
+                            bookNodeStatus.textContent = `Status: ${library[i].status}`;
+                        });
+
                         break;
                     }
                 }
@@ -107,10 +113,6 @@ function displayBooksInLibrary(library) {
                 removeBookFromLibrary(removeBookBtn.parentElement.getAttribute("data-id"));
                 displayBooksInLibrary(libraryOfBooks);
                 // console.log(libraryOfBooks);
-            });
-
-            bookNodeStatus.addEventListener("click", (e) => {
-                bookNode.toggleReadStatus();
             });
     
             bookNode.setAttribute("data-id", `${library[i].id}`);
@@ -133,12 +135,3 @@ newBookFormContainer.addEventListener("close", (e) => {
 })
 
 // pseudocode!!
-// change the element of bookNodeStatus to be a button for toggling read status
-// create a function on Book's prototype that toggles each instance's read status
-    // need to update the book instance's actual status property + the associated DOM element's status textContent
-    // pass the function the book instance's unique id, which will be used to search the array of books and find the right book
-    // the function will check the right book's status
-        // if it's "read", change it to "unread" and update the DOM element's status textContent
-        // if it's "unread", change it to "read" and update the DOM element's status textContent
-// attach event listener to status toggle button (do this inside displayBooksInLibrary, just like the event listener for removing books)
-// inside callback function, call the toggle function
