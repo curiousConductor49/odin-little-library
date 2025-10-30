@@ -1,5 +1,5 @@
 // assign dom elements to variables
-const newBookFormContainer = document.querySelector(".new-book-form-container");
+const newBookFormModal = document.querySelector(".new-book-form-modal");
 const newBookForm = document.querySelector(".new-book-form");
 const submitBtn = document.querySelector(".submit-btn");
 const newBookBtn = document.querySelector(".new-book-btn");
@@ -30,8 +30,8 @@ function addBookToLibrary(title, author, pages, status) {
     libraryOfBooks.push(newBookItem);
 }
 
-// RENAME to createBookForLibrary
-function createNewBookFromUser(event) {
+// creates new book using form input values
+function createNewBook(event) {
     // assign form inputs to variables
     const authorInput = document.getElementById("book-author");
     const titleInput = document.getElementById("book-title");
@@ -48,7 +48,7 @@ function createNewBookFromUser(event) {
         const formInputString = formInputArr.toString();
 
         event.preventDefault();
-        newBookFormContainer.close(formInputString);
+        newBookFormModal.close(formInputString);
         // clear form control values upon form submission
         titleInput.value = null;
         authorInput.value = null;
@@ -134,11 +134,11 @@ function displayBooksInLibrary(library) {
 }
 
 // attach event listeners to add a new book: open dialog, submit form and close dialog
-newBookBtn.addEventListener("click", () => {newBookFormContainer.showModal()});
-submitBtn.addEventListener("click", createNewBookFromUser);
-newBookFormContainer.addEventListener("close", (e) => {
+newBookBtn.addEventListener("click", () => {newBookFormModal.showModal()});
+submitBtn.addEventListener("click", createNewBook);
+newBookFormModal.addEventListener("close", (e) => {
     // store the return value of the closed dialog i.e. the form's inputs and pass it as indexed array values to add a new book
-    const inputArray = newBookFormContainer.returnValue.split(",");
+    const inputArray = newBookFormModal.returnValue.split(",");
     addBookToLibrary(inputArray[0], inputArray[1], inputArray[2], inputArray[3]);
     displayBooksInLibrary(libraryOfBooks);
     // console.log(libraryOfBooks);
