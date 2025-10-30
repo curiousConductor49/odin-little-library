@@ -118,7 +118,6 @@ function displayBooksInLibrary(library) {
             removeBookBtn.addEventListener("click", (e) => {
                 removeBookFromLibrary(removeBookBtn.parentElement.getAttribute("data-id"));
                 displayBooksInLibrary(libraryOfBooks);
-                // console.log(libraryOfBooks);
             });
             
             // give each book element a data-attribute whose value is the book's unique id
@@ -141,5 +140,4 @@ newBookFormModal.addEventListener("close", (e) => {
     const inputArray = newBookFormModal.returnValue.split(",");
     addBookToLibrary(inputArray[0], inputArray[1], inputArray[2], inputArray[3]);
     displayBooksInLibrary(libraryOfBooks);
-    // console.log(libraryOfBooks);
 })
