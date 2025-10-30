@@ -4,15 +4,10 @@ const newBookForm = document.querySelector(".new-book-form");
 const submitBtn = document.querySelector(".submit-btn");
 const newBookBtn = document.querySelector(".new-book-btn");
 const libraryContainer = document.querySelector(".library-container");
-const emptyInputNotif = document.createElement("p");
+const emptyInputNotif = document.querySelector(".empty-input-notif");
 
 // set default text of library
 libraryContainer.textContent = "No books here!";
-
-// REFACTOR this to create the notif for an empty input(s) inside createNewBookFromUser
-// append to the dialog element and each time an empty input's detected, check the dialog element's children to see if it already has the notif child and only create one if it doesn't (use Element.children)...prevents multiple from being made while also ensuring the notif's contained within the function instead of being an unnecessary global variable
-emptyInputNotif.setAttribute("class", "empty-input-notif");
-newBookForm.appendChild(emptyInputNotif);
 
 // initialize empty array for books, create constructor function and prototype method for toggling read status
 const libraryOfBooks = [];
@@ -44,9 +39,10 @@ function createNewBookFromUser(event) {
     const statusInput = document.getElementById("book-status");
     // store whitespace-trimmed input values in an array
     const formInputArr = [titleInput.value, authorInput.value,pagesInput.value, statusInput.value].map((input) => input.trim());
-    // to be refactored to include a notif for empty input(s)
+    // notify user if a form input(s) is empty
     if (formInputArr.some(val => val === "" || val.trim() === "")) {
         emptyInputNotif.textContent = "Please fill out all fields to add a new book!";
+
         event.preventDefault();
     } else {
         const formInputString = formInputArr.toString();
